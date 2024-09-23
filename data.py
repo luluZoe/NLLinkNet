@@ -7,7 +7,7 @@ import cv2
 import numpy as np
 import torch
 import torch.utils.data as data
-
+import torch.nn.functional as F
 
 def randomHueSaturationValue(image, hue_shift_limit=(-180, 180),
                              sat_shift_limit=(-255, 255),
@@ -124,7 +124,8 @@ def default_load(id, root):
     # img = np.array(img, np.float32).transpose(2,0,1)/255.0
     img = np.array(img, np.float32).transpose(2, 0, 1) / 255.0 * 3.2 - 1.6
     mask = np.array(mask, np.float32).transpose(2, 0, 1) / 255.0
-    mask[mask >= 0.5] = 1
+    # mask[mask >= 0.5] = 1
+    mask[mask > 0.5] = 1
     mask[mask <= 0.5] = 0
     # mask = abs(mask-1)
     return img, mask
@@ -142,6 +143,8 @@ class ImageFolder(data.Dataset):
     def __getitem__(self, index):
         id = self.ids[index]
         img, mask = self.load(id, self.root)
+
+
         img = torch.Tensor(img)
         mask = torch.Tensor(mask)
 
@@ -154,7 +157,13 @@ class ImageFolder(data.Dataset):
         x = int(x)
         croped_img = img[:, y:int(y + h), x:int(x + w)]
         croped_mask = mask[:, y:int(y + h), x:int(x + w)]
-        return croped_img, croped_mask
+
+        padded_img = F.pad(croped_img, (0, self.crop_size[1] - croped_img.shape[2], 0, self.crop_size[0] - croped_img.shape[1]))
+        padded_mask = F.pad(croped_mask, (0, self.crop_size[1] - croped_mask.shape[2], 0, self.crop_size[0] - croped_mask.shape[1]))
+
+        return padded_img, padded_mask
+
+        # return croped_img, croped_mask
 
     def __len__(self):
         return len(list(self.ids))
