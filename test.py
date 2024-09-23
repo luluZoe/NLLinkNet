@@ -12,7 +12,7 @@ from networks.unet import Unet
 from test_framework import TTAFramework
 
 
-def test_models(model, name, source='../dataset/Road/valid', scales=(1.0,), target=''):
+def test_models(model, name, source='../dataset/val', scales=(1.0,), target=''):
     if type(scales) == tuple:
         scales = list(scales)
     print(model, name, source, scales, target)
@@ -25,9 +25,12 @@ def test_models(model, name, source='../dataset/Road/valid', scales=(1.0,), targ
     else:
         target = 'submits/' + target + '/'
 
-    source = '../dataset/Road/valid/'
+    # source = '../dataset/Road/valid/'
+    # val = os.listdir(source)
 
-    val = os.listdir(source)
+    img_source = os.path.join(source, 'images/')
+    val = os.listdir(img_source)
+
     if not os.path.exists(target):
         try:
             os.makedirs(target)
@@ -52,7 +55,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", help="set model name")
     parser.add_argument("--name", help="set path of weights")
-    parser.add_argument("--source", help="path of test datasets", default='../dataset/Road/valid')
+    parser.add_argument("--source", help="path of test datasets", default='../dataset/val')
     parser.add_argument("--scales", help="set scales for MST", default=[1.0], type=float, nargs='*')
     parser.add_argument("--target", help="path of submit files", default='')
 

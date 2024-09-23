@@ -94,9 +94,18 @@ def randomRotate90(image, mask, u=0.5):
 
 
 def default_load(id, root):
-    img = cv2.imread(os.path.join(root, '{}_sat.jpg').format(id))
+    # img = cv2.imread(os.path.join(root, '{}_sat.jpg').format(id))
+    # img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    # mask = cv2.imread(os.path.join(root + '{}_mask.png').format(id), cv2.IMREAD_GRAYSCALE)
+
+    # id 是去掉后缀的文件名，即图片编码
+    img_path = os.path.join(root, 'images', f'{id}.png')  # 修改为新的路径和文件名格式
+    mask_path = os.path.join(root, 'labels', f'{id}.png')  # 修改为新的路径和文件名格式
+
+    img = cv2.imread(img_path)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-    mask = cv2.imread(os.path.join(root + '{}_mask.png').format(id), cv2.IMREAD_GRAYSCALE)
+    mask = cv2.imread(mask_path, cv2.IMREAD_GRAYSCALE)
+
     img = randomHueSaturationValue(img,
                                    hue_shift_limit=(-30, 30),
                                    sat_shift_limit=(-5, 5),
