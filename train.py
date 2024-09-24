@@ -15,7 +15,7 @@ from test import test_models
 from train_framework import TrainFramework
 
 
-def train_models(model, name, crop_size=(1024, 1024), init_learning_rate=0.0003, dataset='../dataset/train/',
+def train_models(model, name, crop_size=(1024, 1024), init_learning_rate=0.0003, dataset='./dataset/train/',
                  load='', BATCHSIZE_PER_CARD=4,total_epoch=500,weight_decay_factor=5.0):
     if type(crop_size) == tuple:
         crop_size = list(crop_size)
@@ -94,7 +94,7 @@ def main():
     parser.add_argument("--name", help="name of log and weight files")
     parser.add_argument("--crop_size", help="set the crop size", default=[512, 512], type=int, nargs='*')
     parser.add_argument("--init_lr", help="set the initial learning rate", default=0.0003, type=float)
-    parser.add_argument("--dataset", help="the path of train datasets", default="../dataset/train/")
+    parser.add_argument("--dataset", help="the path of train datasets", default="./dataset/train/")
     parser.add_argument("--load", help="the path of the weight file for loading", default="")
     parser.add_argument("--total_epoch", help="total number of epochs", type=int, default=500)
     parser.add_argument("--weight_decay_factor", help="wegith decay factor", type=float, default=5.0)

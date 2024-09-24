@@ -12,7 +12,7 @@ from networks.unet import Unet
 from test_framework import TTAFramework
 
 
-def test_models(model, name, source='../dataset/val', scales=(1.0,), target=''):
+def test_models(model, name, source='./dataset/val', scales=(1.0,), target='./dataset/val/inference/'):
     if type(scales) == tuple:
         scales = list(scales)
     print(model, name, source, scales, target)
@@ -42,22 +42,22 @@ def test_models(model, name, source='../dataset/val', scales=(1.0,), target=''):
     if len_scales > 1:
         print('multi-scaled test : ', scales)
 
-    for i, name in tqdm(enumerate(val), ncols=10, desc="Testing "):
-        mask = solver.test_one_img_from_path(source + name, scales)
+    for name in tqdm(enumerate(val), ncols=10, desc="Testing "):
+        mask = solver.test_one_img_from_path(img_source + name, scales)
         mask[mask > 4.0 * len_scales] = 255  # 4.0
         mask[mask <= 4.0 * len_scales] = 0
         mask = mask[:, :, None]
         mask = np.concatenate([mask, mask, mask], axis=2)
-        cv2.imwrite(target + name[:-7] + 'mask.png', mask.astype(np.uint8))
+        cv2.imwrite(target + name, mask.astype(np.uint8))
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", help="set model name")
     parser.add_argument("--name", help="set path of weights")
-    parser.add_argument("--source", help="path of test datasets", default='../dataset/val')
+    parser.add_argument("--source", help="path of test datasets", default='./dataset/val')
     parser.add_argument("--scales", help="set scales for MST", default=[1.0], type=float, nargs='*')
-    parser.add_argument("--target", help="path of submit files", default='')
+    parser.add_argument("--target", help="path of submit files", default='./dataset/val/inference/')
 
     args = parser.parse_args()
 
