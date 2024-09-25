@@ -98,6 +98,7 @@ def main():
     parser.add_argument("--load", help="the path of the weight file for loading", default="")
     parser.add_argument("--total_epoch", help="total number of epochs", type=int, default=500)
     parser.add_argument("--weight_decay_factor", help="wegith decay factor", type=float, default=5.0)
+    parser.add_argument("--num_samples", help="sample quantity during testing", type=int, default=None)
     args = parser.parse_args()
 
     models = {'NL3_LinkNet': NL3_LinkNet, 'NL4_LinkNet': NL4_LinkNet, 'NL34_LinkNet': NL34_LinkNet,
@@ -113,11 +114,15 @@ def main():
     dataset = args.dataset
     load = args.load
     total_epoch = args.total_epoch
-    weight_decay_factor = args.weight_decay_factor 
+    weight_decay_factor = args.weight_decay_factor
+    num_samples = args.num_samples 
     
     train_models(model=model, name=name, crop_size=crop_size, init_learning_rate=init_learning_rate, dataset=dataset,
                  load=load,total_epoch=total_epoch,weight_decay_factor=weight_decay_factor)
-    test_models(model=model, name=name, scales=[1.0])
+    
+    test_models(model=model, name=name, source='./dataset/train', scales=[1.0], target= './dataset/train/NL34_LinkNet/', num_samples=num_samples)
+
+    test_models(model=model, name=name, source='./dataset/val', scales=[1.0], target='./dataset/val/NL34_LinkNet/', num_samples=num_samples)
 
 
 if __name__ == "__main__":
