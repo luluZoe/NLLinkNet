@@ -6,6 +6,7 @@ import torch
 import torch.nn as nn
 from torch.autograd import Variable as V
 from PIL import Image
+from skimage.transform import resize 
 
 BATCHSIZE_PER_CARD = 1
 
@@ -30,21 +31,25 @@ class TTAFramework():
                 # scaled_mask = scipy.misc.imresize(out[fs], scaled_size, interp='bilinear', mode=None)
                 # scaled_mask = np.divide(scaled_mask, 255)
                 # ms_mask[fs] = ms_mask[fs] + scaled_mask
+                scaled_mask = resize(out[fs], scaled_size, order=1, anti_aliasing=True)
+                ms_mask[fs] = ms_mask[fs] + scaled_mask
 
                 # 将 NumPy 数组转换为 PIL 图像
-                img = Image.fromarray(out[fs])
+                # img = Image.fromarray(out[fs])
                 
                 # 调整图像尺寸
-                scaled_img = img.resize(scaled_size, Image.BILINEAR)
+                # scaled_img = img.resize(scaled_size, Image.BILINEAR)
                 
                 # 将 PIL 图像转换为 NumPy 数组
-                scaled_mask = np.array(scaled_img)
-                
+                # scaled_mask = np.array(scaled_img)
+                # print(f"scaled_mask的初始值{scaled_mask}")
                 # 归一化
-                scaled_mask = np.divide(scaled_mask, 255)
-                
+                # scaled_mask = np.divide(scaled_mask, 255)
+                # print(f"scaled_mask的归一化值{scaled_mask}")
                 # 更新 ms_mask
-                ms_mask[fs] = ms_mask[fs] + scaled_mask
+                # print(f"ms_mask[fs]的初始值{ms_mask[fs]}")
+                # ms_mask[fs] = ms_mask[fs] + scaled_mask
+                # print(f"ms_mask[fs]的更新值{ms_mask[fs]}")
 
         return ms_mask
 

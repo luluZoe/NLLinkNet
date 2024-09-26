@@ -13,7 +13,7 @@ from networks.unet import Unet
 from test_framework import TTAFramework
 
 
-def test_models(model, name, source='./dataset/val', scales=(1.0,), target='./dataset/val/NL34_LinkNet/', num_samples=None):
+def test_models(model, name, source='./dataset/val', scales=(1.0,), target='./dataset/val/', num_samples=None):
     if type(scales) == tuple:
         scales = list(scales)
     print(model, name, source, scales, target)
@@ -24,7 +24,7 @@ def test_models(model, name, source='./dataset/val', scales=(1.0,), target='./da
     if target == '':
         target = 'submits/' + name + '/'
     else:
-        target = 'submits/' + target + '/'
+        target = 'submits/' + target + '/' + name+ '/'
 
     # source = '../dataset/Road/valid/'
     # val = os.listdir(source)
@@ -47,15 +47,28 @@ def test_models(model, name, source='./dataset/val', scales=(1.0,), target='./da
         print('multi-scaled test : ', scales)
 
     for i, name in tqdm(enumerate(val), ncols=10, desc="Testing "):
+        # mask = solver.test_one_img_from_path(img_source + name, scales)
+        # print(img_source + name)
+        # mask[mask > 4.0 * len_scales] = 255  # 4.0
+        # mask[mask <= 4.0 * len_scales] = 0
+        # mask = mask[:, :, None]
+        # mask = np.concatenate([mask, mask, mask], axis=2)
+        # print(2)
+        # cv2.imwrite(target + name, mask.astype(np.uint8))
+        # print(target + name)
+
         mask = solver.test_one_img_from_path(img_source + name, scales)
-        print(img_source + name)
-        mask[mask > 4.0 * len_scales] = 255  # 4.0
+        print(mask,"\n")
+        # 二值化：将掩膜值大于某个阈值的设置为 1，其余为 0
+        mask[mask > 4.0 * len_scales] = 255
         mask[mask <= 4.0 * len_scales] = 0
-        mask = mask[:, :, None]
-        mask = np.concatenate([mask, mask, mask], axis=2)
-        print(2)
-        cv2.imwrite(target + name, mask.astype(np.uint8))
-        print(target + name)
+        # mask[mask >= 1.0] = 255
+        # mask[mask < 1.0] = 0
+        
+        # 保存为单通道的 0-1 二值图像
+        cv2.imwrite(target + name, mask.astype(np.uint8))  # 不需要转换为 RGB
+
+
 
 
 def main():
@@ -64,7 +77,7 @@ def main():
     parser.add_argument("--name", help="set path of weights")
     parser.add_argument("--source", help="path of test datasets", default='./dataset/val')
     parser.add_argument("--scales", help="set scales for MST", default=[1.0], type=float, nargs='*')
-    parser.add_argument("--target", help="path of submit files", default='./dataset/val/NL34_LinkNet/')
+    parser.add_argument("--target", help="path of submit files", default='./dataset/val/')
     parser.add_argument("--num_samples", help="sample quantity during testing", type=int, default=None)
 
     args = parser.parse_args()
