@@ -1,0 +1,6 @@
+usage: train.py [-h] [--model MODEL] [--name NAME]
+                [--crop_size [CROP_SIZE [CROP_SIZE ...]]] [--init_lr INIT_LR]
+                [--dataset DATASET] [--load LOAD] [--total_epoch TOTAL_EPOCH]
+                [--weight_decay_factor WEIGHT_DECAY_FACTOR]
+                [--num_samples NUM_SAMPLES]
+train.py: error: argument --init_lr: invalid float value: '0.001--dataset'

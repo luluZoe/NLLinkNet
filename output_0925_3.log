@@ -1,0 +1,108 @@
+nohup: ignoring input
+<class 'networks.nllinknet_pairwise_func.NL_LinkNet_EGaussian'> NL_LinkNet_EGaussian [512, 512] 0.001 ./dataset/train/ 
+/public/home/zzutaopw/miniconda3/envs/NL-LinkNet/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/public/home/zzutaopw/miniconda3/envs/NL-LinkNet/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet34_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet34_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+********
+
+epoch:1    time:100
+
+train_loss:1.011620392004649
+
+SHAPE:[512, 512]
+
+/public/home/zzutaopw/miniconda3/envs/NL-LinkNet/lib/python3.8/site-packages/torch/nn/functional.py:1967: UserWarning: nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.
+  warnings.warn("nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.")
+********
+
+epoch:2    time:168
+
+train_loss:1.0
+
+SHAPE:[512, 512]
+
+********
+
+epoch:3    time:236
+
+train_loss:1.0
+
+SHAPE:[512, 512]
+
+********
+
+epoch:4    time:304
+
+train_loss:1.0
+
+SHAPE:[512, 512]
+
+********
+
+epoch:5    time:372
+
+train_loss:1.0
+
+SHAPE:[512, 512]
+
+********
+
+epoch:6    time:440
+
+train_loss:1.0
+
+SHAPE:[512, 512]
+
+********
+
+epoch:7    time:508
+
+train_loss:1.0
+
+SHAPE:[512, 512]
+
+********
+
+epoch:8    time:576
+
+train_loss:1.0
+
+SHAPE:[512, 512]
+
+<logger.Logger object at 0x2b4a204f07f0>update learning rate: 0.001000 -> 0.000200
+<logger.Logger object at 0x2b4a204f07f0>update learning rate: 0.001000 -> 0.000200
+********
+
+epoch:9    time:644
+
+train_loss:1.0
+
+SHAPE:[512, 512]
+
+<logger.Logger object at 0x2b4a204f07f0>update learning rate: 0.000200 -> 0.000040
+<logger.Logger object at 0x2b4a204f07f0>update learning rate: 0.000200 -> 0.000040
+********
+
+epoch:10    time:712
+
+train_loss:1.0
+
+SHAPE:[512, 512]
+
+<logger.Logger object at 0x2b4a204f07f0>update learning rate: 0.000040 -> 0.000008
+<logger.Logger object at 0x2b4a204f07f0>update learning rate: 0.000040 -> 0.000008
+********
+
+epoch:11    time:781
+
+train_loss:1.0
+
+SHAPE:[512, 512]
+
+early stop at 11 epoch
+Finish!
+<class 'networks.nllinknet_pairwise_func.NL_LinkNet_EGaussian'> NL_LinkNet_EGaussian ./dataset/train [1.0] ./dataset/train/
+Testing : 0it [00:00, ?it/s]Testing : 1it [00:00,  1.89it/s]Testing : 2it [00:00,  3.24it/s]Testing : 3it [00:00,  4.22it/s]Testing : 4it [00:00,  4.93it/s]Testing : 5it [00:01,  5.46it/s]Testing : 6it [00:01,  5.81it/s]Testing : 7it [00:01,  6.08it/s]Testing : 8it [00:01,  6.24it/s]Testing : 9it [00:01,  6.36it/s]Testing : 10it [00:01,  6.45it/s]Testing : 11it [00:02,  6.54it/s]Testing : 12it [00:02,  6.58it/s]Testing : 13it [00:02,  6.15it/s]Testing : 14it [00:02,  6.23it/s]Testing : 15it [00:02,  6.32it/s]Testing : 16it [00:02,  6.38it/s]Testing : 17it [00:02,  6.52it/s]Testing : 18it [00:03,  6.53it/s]Testing : 19it [00:03,  6.41it/s]Testing : 20it [00:03,  6.47it/s]Testing : 20it [00:03,  5.81it/s]
+<class 'networks.nllinknet_pairwise_func.NL_LinkNet_EGaussian'> NL_LinkNet_EGaussian ./dataset/val [1.0] ./dataset/val/
+Testing : 0it [00:00, ?it/s]Testing : 1it [00:00,  3.92it/s]Testing : 2it [00:00,  4.35it/s]Testing : 3it [00:00,  4.86it/s]Testing : 4it [00:00,  5.03it/s]Testing : 5it [00:01,  5.17it/s]Testing : 6it [00:01,  5.19it/s]Testing : 7it [00:01,  5.13it/s]Testing : 8it [00:01,  4.67it/s]Testing : 9it [00:01,  4.66it/s]Testing : 10it [00:02,  4.85it/s]Testing : 11it [00:02,  5.00it/s]Testing : 12it [00:02,  4.98it/s]Testing : 13it [00:02,  5.05it/s]Testing : 14it [00:02,  5.00it/s]Testing : 15it [00:03,  5.18it/s]Testing : 16it [00:03,  5.29it/s]Testing : 17it [00:03,  5.39it/s]Testing : 18it [00:03,  5.41it/s]Testing : 19it [00:03,  5.48it/s]Testing : 20it [00:03,  5.18it/s]Testing : 20it [00:03,  5.05it/s]

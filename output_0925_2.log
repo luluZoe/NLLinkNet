@@ -1,0 +1,208 @@
+nohup: ignoring input
+<class 'networks.nllinknet_location.NL34_LinkNet'> NL34_LinkNet [512, 512] 0.0003 ./dataset/train/ 
+/public/home/zzutaopw/miniconda3/envs/NL-LinkNet/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/public/home/zzutaopw/miniconda3/envs/NL-LinkNet/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet34_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet34_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+********
+
+epoch:1    time:97
+
+train_loss:1.0346469962596894
+
+SHAPE:[512, 512]
+
+/public/home/zzutaopw/miniconda3/envs/NL-LinkNet/lib/python3.8/site-packages/torch/nn/functional.py:1967: UserWarning: nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.
+  warnings.warn("nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.")
+********
+
+epoch:2    time:163
+
+train_loss:1.0000167512893676
+
+SHAPE:[512, 512]
+
+********
+
+epoch:3    time:229
+
+train_loss:1.000007671515147
+
+SHAPE:[512, 512]
+
+********
+
+epoch:4    time:294
+
+train_loss:1.000004198551178
+
+SHAPE:[512, 512]
+
+********
+
+epoch:5    time:359
+
+train_loss:1.000002569357554
+
+SHAPE:[512, 512]
+
+********
+
+epoch:6    time:425
+
+train_loss:1.0000016955534616
+
+SHAPE:[512, 512]
+
+********
+
+epoch:7    time:491
+
+train_loss:1.0000011773904165
+
+SHAPE:[512, 512]
+
+********
+
+epoch:8    time:556
+
+train_loss:1.0000008491675059
+
+SHAPE:[512, 512]
+
+********
+
+epoch:9    time:622
+
+train_loss:1.000000633796056
+
+SHAPE:[512, 512]
+
+********
+
+epoch:10    time:687
+
+train_loss:1.0000004812081655
+
+SHAPE:[512, 512]
+
+********
+
+epoch:11    time:753
+
+train_loss:1.0000003723303477
+
+SHAPE:[512, 512]
+
+********
+
+epoch:12    time:818
+
+train_loss:1.0000002841154734
+
+SHAPE:[512, 512]
+
+********
+
+epoch:13    time:884
+
+train_loss:1.000000238418579
+
+SHAPE:[512, 512]
+
+********
+
+epoch:14    time:950
+
+train_loss:1.000000186363856
+
+SHAPE:[512, 512]
+
+********
+
+epoch:15    time:1015
+
+train_loss:1.0000001211961111
+
+SHAPE:[512, 512]
+
+********
+
+epoch:16    time:1081
+
+train_loss:1.0000001192092896
+
+SHAPE:[512, 512]
+
+********
+
+epoch:17    time:1146
+
+train_loss:1.0000001192092896
+
+SHAPE:[512, 512]
+
+********
+
+epoch:18    time:1211
+
+train_loss:1.0000001192092896
+
+SHAPE:[512, 512]
+
+********
+
+epoch:19    time:1275
+
+train_loss:1.0000001120567321
+
+SHAPE:[512, 512]
+
+********
+
+epoch:20    time:1341
+
+train_loss:1.0000000202655792
+
+SHAPE:[512, 512]
+
+********
+
+epoch:21    time:1407
+
+train_loss:1.0000000003973644
+
+SHAPE:[512, 512]
+
+********
+
+epoch:22    time:1473
+
+train_loss:1.0
+
+SHAPE:[512, 512]
+
+********
+
+epoch:23    time:1539
+
+train_loss:1.0
+
+SHAPE:[512, 512]
+
+********
+
+epoch:24    time:1604
+
+train_loss:1.0
+
+SHAPE:[512, 512]
+
+********
+
+epoch:25    time:1670
+
+train_loss:1.0
+
+SHAPE:[512, 512]
+

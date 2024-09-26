@@ -105,6 +105,7 @@ def default_load(id, root):
     img = cv2.imread(img_path)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     mask = cv2.imread(mask_path, cv2.IMREAD_GRAYSCALE)
+    mask = mask.astype(np.float32)  # 转换为 float32 类型
 
     img = randomHueSaturationValue(img,
                                    hue_shift_limit=(-30, 30),
@@ -123,10 +124,10 @@ def default_load(id, root):
     mask = np.expand_dims(mask, axis=2)
     # img = np.array(img, np.float32).transpose(2,0,1)/255.0
     img = np.array(img, np.float32).transpose(2, 0, 1) / 255.0 * 3.2 - 1.6
-    mask = np.array(mask, np.float32).transpose(2, 0, 1) / 255.0
-    # mask[mask >= 0.5] = 1
-    mask[mask > 0.5] = 1
-    mask[mask <= 0.5] = 0
+    # mask = np.array(mask, np.float32).transpose(2, 0, 1) / 255.0
+    mask = np.array(mask, np.float32).transpose(2, 0, 1) 
+    # mask[mask > 0.5] = 1
+    # mask[mask <= 0.5] = 0
     # mask = abs(mask-1)
     return img, mask
 

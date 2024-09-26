@@ -4,6 +4,7 @@ import os
 import cv2
 import numpy as np
 from tqdm import tqdm
+import random
 
 from networks.dinknet import LinkNet34, DinkNet34
 from networks.nllinknet_location import NL3_LinkNet, NL4_LinkNet, NL34_LinkNet, Baseline
@@ -12,7 +13,7 @@ from networks.unet import Unet
 from test_framework import TTAFramework
 
 
-def test_models(model, name, source='./dataset/val', scales=(1.0,), target='./dataset/val/inference/'):
+def test_models(model, name, source='./dataset/val', scales=(1.0,), target='./dataset/val/', num_samples=None):
     if type(scales) == tuple:
         scales = list(scales)
     print(model, name, source, scales, target)
@@ -23,13 +24,16 @@ def test_models(model, name, source='./dataset/val', scales=(1.0,), target='./da
     if target == '':
         target = 'submits/' + name + '/'
     else:
-        target = 'submits/' + target + '/'
+        target = 'submits/' + target + '/' + name+ '/'
 
     # source = '../dataset/Road/valid/'
     # val = os.listdir(source)
 
     img_source = os.path.join(source, 'images/')
     val = os.listdir(img_source)
+    # 如果指定了 num_samples，则随机选择 num_samples 个样本
+    if num_samples is not None:
+        val = random.sample(val, num_samples)
 
     if not os.path.exists(target):
         try:
@@ -42,13 +46,29 @@ def test_models(model, name, source='./dataset/val', scales=(1.0,), target='./da
     if len_scales > 1:
         print('multi-scaled test : ', scales)
 
-    for name in tqdm(enumerate(val), ncols=10, desc="Testing "):
+    for i, name in tqdm(enumerate(val), ncols=10, desc="Testing "):
+        # mask = solver.test_one_img_from_path(img_source + name, scales)
+        # print(img_source + name)
+        # mask[mask > 4.0 * len_scales] = 255  # 4.0
+        # mask[mask <= 4.0 * len_scales] = 0
+        # mask = mask[:, :, None]
+        # mask = np.concatenate([mask, mask, mask], axis=2)
+        # print(2)
+        # cv2.imwrite(target + name, mask.astype(np.uint8))
+        # print(target + name)
+
         mask = solver.test_one_img_from_path(img_source + name, scales)
-        mask[mask > 4.0 * len_scales] = 255  # 4.0
+        print(mask,"\n")
+        # 二值化：将掩膜值大于某个阈值的设置为 1，其余为 0
+        mask[mask > 4.0 * len_scales] = 255
         mask[mask <= 4.0 * len_scales] = 0
-        mask = mask[:, :, None]
-        mask = np.concatenate([mask, mask, mask], axis=2)
-        cv2.imwrite(target + name, mask.astype(np.uint8))
+        # mask[mask >= 1.0] = 255
+        # mask[mask < 1.0] = 0
+        
+        # 保存为单通道的 0-1 二值图像
+        cv2.imwrite(target + name, mask.astype(np.uint8))  # 不需要转换为 RGB
+
+
 
 
 def main():
@@ -57,7 +77,8 @@ def main():
     parser.add_argument("--name", help="set path of weights")
     parser.add_argument("--source", help="path of test datasets", default='./dataset/val')
     parser.add_argument("--scales", help="set scales for MST", default=[1.0], type=float, nargs='*')
-    parser.add_argument("--target", help="path of submit files", default='./dataset/val/inference/')
+    parser.add_argument("--target", help="path of submit files", default='./dataset/val/')
+    parser.add_argument("--num_samples", help="sample quantity during testing", type=int, default=None)
 
     args = parser.parse_args()
 
@@ -72,8 +93,9 @@ def main():
     scales = args.scales
     target = args.target
     source = args.source
+    num_samples = args.num_samples
 
-    test_models(model=model, name=name, source=source, scales=scales, target=target)
+    test_models(model=model, name=name, source=source, scales=scales, target=target, num_samples=num_samples)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,832 @@
+nohup: ignoring input
+<class 'networks.unet.Unet'> UNet [512, 512] 0.0003 ./dataset/train/ 
+MIOpen(HIP): Warning [PrecompileKernels] exec_utils.cpp:65: miopen::exec::Run(): 513(Unknown error 513). popen(/public/software/compiler/rocm/dtk-23.10/llvm/bin/clang  -x assembler -target amdgcn--amdhsa -mno-xnack  -Wa,-defsym,elements_in_dword=1 -Wa,-defsym,batch_size=4 -Wa,-defsym,img_h=256 -Wa,-defsym,img_w=256 -Wa,-defsym,input_channels=32 -Wa,-defsym,output_channels=16 -Wa,-defsym,wei_h=3 -Wa,-defsym,wei_w=3 -Wa,-defsym,pad_h=1 -Wa,-defsym,pad_w=1 -Wa,-defsym,stride_h=1 -Wa,-defsym,stride_w=1 -Wa,-defsym,weights_layout=0 -Wa,-defsym,reverse_weights=0 -Wa,-defsym,ROCM_METADATA_VERSION=5 -Wa,-defsym,limit_wave_cnt=0 -Wa,-defsym,chunk_size=16 -Wa,-defsym,c_per_wave=4 -Wa,-defsym,k_per_wave=2 -Wa,-defsym,n_per_group=4 -Wa,-defsym,pipe_lines_depth=2 -Wa,-defsym,reverse_inout=0 -Wa,-defsym,enable_debug_output=0 -Wa,-defsym,group_counts=1 -Wa,-defsym,k_group_size_is_power_of_two=1 -mcpu=gfx906 - -o /tmp/miopen-assembly-9213-30fe-5ba6-ea00/file, w) failed
+MIOpen(HIP): Warning [PrecompileKernels] exec_utils.cpp:65: miopen::exec::Run(): 513(Unknown error 513). popen(/public/software/compiler/rocm/dtk-23.10/llvm/bin/clang  -x assembler -target amdgcn--amdhsa -mno-xnack  -Wa,-defsym,elements_in_dword=1 -Wa,-defsym,batch_size=4 -Wa,-defsym,img_h=128 -Wa,-defsym,img_w=128 -Wa,-defsym,input_channels=32 -Wa,-defsym,output_channels=32 -Wa,-defsym,wei_h=3 -Wa,-defsym,wei_w=3 -Wa,-defsym,pad_h=1 -Wa,-defsym,pad_w=1 -Wa,-defsym,stride_h=1 -Wa,-defsym,stride_w=1 -Wa,-defsym,weights_layout=0 -Wa,-defsym,reverse_weights=0 -Wa,-defsym,ROCM_METADATA_VERSION=5 -Wa,-defsym,limit_wave_cnt=0 -Wa,-defsym,chunk_size=16 -Wa,-defsym,c_per_wave=4 -Wa,-defsym,k_per_wave=2 -Wa,-defsym,n_per_group=4 -Wa,-defsym,pipe_lines_depth=2 -Wa,-defsym,reverse_inout=0 -Wa,-defsym,enable_debug_output=0 -Wa,-defsym,group_counts=1 -Wa,-defsym,k_group_size_is_power_of_two=1 -mcpu=gfx906 - -o /tmp/miopen-assembly-170f-9832-4e9f-f226/file, w) failed
+MIOpen(HIP): Warning [PrecompileKernels] exec_utils.cpp:65: miopen::exec::Run(): 513(Unknown error 513). popen(/public/software/compiler/rocm/dtk-23.10/llvm/bin/clang  -x assembler -target amdgcn--amdhsa -mno-xnack  -Wa,-defsym,elements_in_dword=1 -Wa,-defsym,batch_size=4 -Wa,-defsym,img_h=128 -Wa,-defsym,img_w=128 -Wa,-defsym,input_channels=32 -Wa,-defsym,output_channels=32 -Wa,-defsym,wei_h=3 -Wa,-defsym,wei_w=3 -Wa,-defsym,pad_h=1 -Wa,-defsym,pad_w=1 -Wa,-defsym,stride_h=1 -Wa,-defsym,stride_w=1 -Wa,-defsym,weights_layout=0 -Wa,-defsym,reverse_weights=0 -Wa,-defsym,ROCM_METADATA_VERSION=5 -Wa,-defsym,limit_wave_cnt=0 -Wa,-defsym,chunk_size=16 -Wa,-defsym,c_per_wave=4 -Wa,-defsym,k_per_wave=2 -Wa,-defsym,n_per_group=4 -Wa,-defsym,pipe_lines_depth=2 -Wa,-defsym,reverse_inout=0 -Wa,-defsym,enable_debug_output=0 -Wa,-defsym,group_counts=1 -Wa,-defsym,k_group_size_is_power_of_two=1 -mcpu=gfx906 - -o /tmp/miopen-assembly-3fbd-654d-2d01-3260/file, w) failed
+MIOpen(HIP): Warning [PrecompileKernels] exec_utils.cpp:65: miopen::exec::Run(): 513(Unknown error 513). popen(/public/software/compiler/rocm/dtk-23.10/llvm/bin/clang  -x assembler -target amdgcn--amdhsa -mno-xnack  -Wa,-defsym,elements_in_dword=1 -Wa,-defsym,batch_size=4 -Wa,-defsym,img_h=64 -Wa,-defsym,img_w=64 -Wa,-defsym,input_channels=128 -Wa,-defsym,output_channels=64 -Wa,-defsym,wei_h=3 -Wa,-defsym,wei_w=3 -Wa,-defsym,pad_h=1 -Wa,-defsym,pad_w=1 -Wa,-defsym,stride_h=1 -Wa,-defsym,stride_w=1 -Wa,-defsym,weights_layout=0 -Wa,-defsym,reverse_weights=0 -Wa,-defsym,ROCM_METADATA_VERSION=5 -Wa,-defsym,limit_wave_cnt=0 -Wa,-defsym,chunk_size=16 -Wa,-defsym,c_per_wave=4 -Wa,-defsym,k_per_wave=2 -Wa,-defsym,n_per_group=2 -Wa,-defsym,pipe_lines_depth=2 -Wa,-defsym,reverse_inout=0 -Wa,-defsym,enable_debug_output=0 -Wa,-defsym,group_counts=1 -Wa,-defsym,k_group_size_is_power_of_two=1 -mcpu=gfx906 - -o /tmp/miopen-assembly-82e1-5f80-fdab-3997/file, w) failed
+MIOpen(HIP): Error [EvaluateInvokers] exec_utils.cpp:65: miopen::exec::Run(): 513(Unknown error 513). popen(/public/software/compiler/rocm/dtk-23.10/llvm/bin/clang  -x assembler -target amdgcn--amdhsa -mno-xnack  -Wa,-defsym,elements_in_dword=1 -Wa,-defsym,batch_size=4 -Wa,-defsym,img_h=64 -Wa,-defsym,img_w=64 -Wa,-defsym,input_channels=128 -Wa,-defsym,output_channels=64 -Wa,-defsym,wei_h=3 -Wa,-defsym,wei_w=3 -Wa,-defsym,pad_h=1 -Wa,-defsym,pad_w=1 -Wa,-defsym,stride_h=1 -Wa,-defsym,stride_w=1 -Wa,-defsym,weights_layout=0 -Wa,-defsym,reverse_weights=0 -Wa,-defsym,ROCM_METADATA_VERSION=5 -Wa,-defsym,limit_wave_cnt=0 -Wa,-defsym,chunk_size=16 -Wa,-defsym,c_per_wave=4 -Wa,-defsym,k_per_wave=2 -Wa,-defsym,n_per_group=2 -Wa,-defsym,pipe_lines_depth=2 -Wa,-defsym,reverse_inout=0 -Wa,-defsym,enable_debug_output=0 -Wa,-defsym,group_counts=1 -Wa,-defsym,k_group_size_is_power_of_two=1 -mcpu=gfx906 - -o /tmp/miopen-assembly-06b4-af8d-6bdc-ec32/file, w) failed Performance may degrade.
+MIOpen(HIP): Warning [PrecompileKernels] exec_utils.cpp:65: miopen::exec::Run(): 513(Unknown error 513). popen(/public/software/compiler/rocm/dtk-23.10/llvm/bin/clang  -x assembler -target amdgcn--amdhsa -mno-xnack  -Wa,-defsym,elements_in_dword=1 -Wa,-defsym,batch_size=4 -Wa,-defsym,img_h=32 -Wa,-defsym,img_w=32 -Wa,-defsym,input_channels=64 -Wa,-defsym,output_channels=128 -Wa,-defsym,wei_h=3 -Wa,-defsym,wei_w=3 -Wa,-defsym,pad_h=1 -Wa,-defsym,pad_w=1 -Wa,-defsym,stride_h=1 -Wa,-defsym,stride_w=1 -Wa,-defsym,weights_layout=0 -Wa,-defsym,reverse_weights=0 -Wa,-defsym,ROCM_METADATA_VERSION=5 -Wa,-defsym,limit_wave_cnt=0 -Wa,-defsym,chunk_size=8 -Wa,-defsym,c_per_wave=8 -Wa,-defsym,k_per_wave=2 -Wa,-defsym,n_per_group=2 -Wa,-defsym,pipe_lines_depth=2 -Wa,-defsym,reverse_inout=0 -Wa,-defsym,enable_debug_output=0 -Wa,-defsym,group_counts=1 -Wa,-defsym,k_group_size_is_power_of_two=1 -mcpu=gfx906 - -o /tmp/miopen-assembly-a015-be5d-1cae-5746/file, w) failed
+MIOpen(HIP): Warning [PrecompileKernels] exec_utils.cpp:65: miopen::exec::Run(): 513(Unknown error 513). popen(/public/software/compiler/rocm/dtk-23.10/llvm/bin/clang  -x assembler -target amdgcn--amdhsa -mno-xnack  -Wa,-defsym,elements_in_dword=1 -Wa,-defsym,batch_size=4 -Wa,-defsym,img_h=64 -Wa,-defsym,img_w=64 -Wa,-defsym,input_channels=32 -Wa,-defsym,output_channels=64 -Wa,-defsym,wei_h=3 -Wa,-defsym,wei_w=3 -Wa,-defsym,pad_h=1 -Wa,-defsym,pad_w=1 -Wa,-defsym,stride_h=1 -Wa,-defsym,stride_w=1 -Wa,-defsym,weights_layout=0 -Wa,-defsym,reverse_weights=0 -Wa,-defsym,ROCM_METADATA_VERSION=5 -Wa,-defsym,limit_wave_cnt=0 -Wa,-defsym,chunk_size=16 -Wa,-defsym,c_per_wave=4 -Wa,-defsym,k_per_wave=2 -Wa,-defsym,n_per_group=4 -Wa,-defsym,pipe_lines_depth=2 -Wa,-defsym,reverse_inout=0 -Wa,-defsym,enable_debug_output=0 -Wa,-defsym,group_counts=1 -Wa,-defsym,k_group_size_is_power_of_two=1 -mcpu=gfx906 - -o /tmp/miopen-assembly-a40b-66bd-7af5-771e/file, w) failed
+MIOpen(HIP): Warning [PrecompileKernels] exec_utils.cpp:65: miopen::exec::Run(): 513(Unknown error 513). popen(/public/software/compiler/rocm/dtk-23.10/llvm/bin/clang  -x assembler -target amdgcn--amdhsa -mno-xnack  -Wa,-defsym,elements_in_dword=1 -Wa,-defsym,batch_size=4 -Wa,-defsym,img_h=64 -Wa,-defsym,img_w=64 -Wa,-defsym,input_channels=32 -Wa,-defsym,output_channels=64 -Wa,-defsym,wei_h=3 -Wa,-defsym,wei_w=3 -Wa,-defsym,pad_h=1 -Wa,-defsym,pad_w=1 -Wa,-defsym,stride_h=1 -Wa,-defsym,stride_w=1 -Wa,-defsym,weights_layout=0 -Wa,-defsym,reverse_weights=0 -Wa,-defsym,ROCM_METADATA_VERSION=5 -Wa,-defsym,limit_wave_cnt=0 -Wa,-defsym,chunk_size=16 -Wa,-defsym,c_per_wave=4 -Wa,-defsym,k_per_wave=2 -Wa,-defsym,n_per_group=4 -Wa,-defsym,pipe_lines_depth=2 -Wa,-defsym,reverse_inout=0 -Wa,-defsym,enable_debug_output=0 -Wa,-defsym,group_counts=1 -Wa,-defsym,k_group_size_is_power_of_two=1 -mcpu=gfx906 - -o /tmp/miopen-assembly-9876-9d5c-3e8c-9d2f/file, w) failed
+MIOpen(HIP): Warning [PrecompileKernels] exec_utils.cpp:65: miopen::exec::Run(): 513(Unknown error 513). popen(/public/software/compiler/rocm/dtk-23.10/llvm/bin/clang  -x assembler -target amdgcn--amdhsa -mno-xnack  -Wa,-defsym,elements_in_dword=1 -Wa,-defsym,batch_size=4 -Wa,-defsym,img_h=128 -Wa,-defsym,img_w=128 -Wa,-defsym,input_channels=16 -Wa,-defsym,output_channels=32 -Wa,-defsym,wei_h=3 -Wa,-defsym,wei_w=3 -Wa,-defsym,pad_h=1 -Wa,-defsym,pad_w=1 -Wa,-defsym,stride_h=1 -Wa,-defsym,stride_w=1 -Wa,-defsym,weights_layout=0 -Wa,-defsym,reverse_weights=0 -Wa,-defsym,ROCM_METADATA_VERSION=5 -Wa,-defsym,limit_wave_cnt=0 -Wa,-defsym,chunk_size=16 -Wa,-defsym,c_per_wave=4 -Wa,-defsym,k_per_wave=2 -Wa,-defsym,n_per_group=4 -Wa,-defsym,pipe_lines_depth=2 -Wa,-defsym,reverse_inout=0 -Wa,-defsym,enable_debug_output=0 -Wa,-defsym,group_counts=1 -Wa,-defsym,k_group_size_is_power_of_two=1 -mcpu=gfx906 - -o /tmp/miopen-assembly-8b3b-ac9b-a7ff-754e/file, w) failed
+MIOpen(HIP): Warning [PrecompileKernels] exec_utils.cpp:65: miopen::exec::Run(): 513(Unknown error 513). popen(/public/software/compiler/rocm/dtk-23.10/llvm/bin/clang  -x assembler -target amdgcn--amdhsa -mno-xnack  -Wa,-defsym,elements_in_dword=1 -Wa,-defsym,batch_size=4 -Wa,-defsym,img_h=256 -Wa,-defsym,img_w=256 -Wa,-defsym,input_channels=8 -Wa,-defsym,output_channels=16 -Wa,-defsym,wei_h=3 -Wa,-defsym,wei_w=3 -Wa,-defsym,pad_h=1 -Wa,-defsym,pad_w=1 -Wa,-defsym,stride_h=1 -Wa,-defsym,stride_w=1 -Wa,-defsym,weights_layout=0 -Wa,-defsym,reverse_weights=0 -Wa,-defsym,ROCM_METADATA_VERSION=5 -Wa,-defsym,limit_wave_cnt=0 -Wa,-defsym,chunk_size=16 -Wa,-defsym,c_per_wave=4 -Wa,-defsym,k_per_wave=1 -Wa,-defsym,n_per_group=4 -Wa,-defsym,pipe_lines_depth=2 -Wa,-defsym,reverse_inout=0 -Wa,-defsym,enable_debug_output=0 -Wa,-defsym,group_counts=1 -Wa,-defsym,k_group_size_is_power_of_two=1 -mcpu=gfx906 - -o /tmp/miopen-assembly-4f16-0ad6-7d96-873b/file, w) failed
+MIOpen(HIP): Error [EvaluateInvokers] exec_utils.cpp:65: miopen::exec::Run(): 513(Unknown error 513). popen(/public/software/compiler/rocm/dtk-23.10/llvm/bin/clang  -x assembler -target amdgcn--amdhsa -mno-xnack  -Wa,-defsym,elements_in_dword=1 -Wa,-defsym,batch_size=4 -Wa,-defsym,img_h=256 -Wa,-defsym,img_w=256 -Wa,-defsym,input_channels=8 -Wa,-defsym,output_channels=16 -Wa,-defsym,wei_h=3 -Wa,-defsym,wei_w=3 -Wa,-defsym,pad_h=1 -Wa,-defsym,pad_w=1 -Wa,-defsym,stride_h=1 -Wa,-defsym,stride_w=1 -Wa,-defsym,weights_layout=0 -Wa,-defsym,reverse_weights=0 -Wa,-defsym,ROCM_METADATA_VERSION=5 -Wa,-defsym,limit_wave_cnt=0 -Wa,-defsym,chunk_size=16 -Wa,-defsym,c_per_wave=4 -Wa,-defsym,k_per_wave=1 -Wa,-defsym,n_per_group=4 -Wa,-defsym,pipe_lines_depth=2 -Wa,-defsym,reverse_inout=0 -Wa,-defsym,enable_debug_output=0 -Wa,-defsym,group_counts=1 -Wa,-defsym,k_group_size_is_power_of_two=1 -mcpu=gfx906 - -o /tmp/miopen-assembly-a43d-a0b5-04ac-eb2b/file, w) failed Performance may degrade.
+********
+
+epoch:1    time:271
+
+train_loss:1.7742924553155899
+
+SHAPE:[512, 512]
+
+********
+
+epoch:2    time:339
+
+train_loss:0.9744969369967779
+
+SHAPE:[512, 512]
+
+********
+
+epoch:3    time:387
+
+train_loss:0.958721053202947
+
+SHAPE:[512, 512]
+
+********
+
+epoch:4    time:433
+
+train_loss:0.9302803881963094
+
+SHAPE:[512, 512]
+
+********
+
+epoch:5    time:480
+
+train_loss:0.9136434694131216
+
+SHAPE:[512, 512]
+
+********
+
+epoch:6    time:526
+
+train_loss:0.9059313905239105
+
+SHAPE:[512, 512]
+
+********
+
+epoch:7    time:573
+
+train_loss:0.898061136007309
+
+SHAPE:[512, 512]
+
+********
+
+epoch:8    time:618
+
+train_loss:0.8762388358513514
+
+SHAPE:[512, 512]
+
+********
+
+epoch:9    time:664
+
+train_loss:0.8529822202523549
+
+SHAPE:[512, 512]
+
+********
+
+epoch:10    time:710
+
+train_loss:0.852107569972674
+
+SHAPE:[512, 512]
+
+********
+
+epoch:11    time:756
+
+train_loss:0.838766800959905
+
+SHAPE:[512, 512]
+
+********
+
+epoch:12    time:802
+
+train_loss:0.8418082731962204
+
+SHAPE:[512, 512]
+
+********
+
+epoch:13    time:847
+
+train_loss:0.8303734705845515
+
+SHAPE:[512, 512]
+
+********
+
+epoch:14    time:894
+
+train_loss:0.8276315508286158
+
+SHAPE:[512, 512]
+
+********
+
+epoch:15    time:939
+
+train_loss:0.8150758622090022
+
+SHAPE:[512, 512]
+
+********
+
+epoch:16    time:985
+
+train_loss:0.8287155163288117
+
+SHAPE:[512, 512]
+
+********
+
+epoch:17    time:1031
+
+train_loss:0.8147415482004483
+
+SHAPE:[512, 512]
+
+********
+
+epoch:18    time:1077
+
+train_loss:0.8115810889999072
+
+SHAPE:[512, 512]
+
+********
+
+epoch:19    time:1123
+
+train_loss:0.8168291748563449
+
+SHAPE:[512, 512]
+
+********
+
+epoch:20    time:1168
+
+train_loss:0.8066406726837159
+
+SHAPE:[512, 512]
+
+********
+
+epoch:21    time:1214
+
+train_loss:0.7970984689394633
+
+SHAPE:[512, 512]
+
+********
+
+epoch:22    time:1260
+
+train_loss:0.7992831969261169
+
+SHAPE:[512, 512]
+
+********
+
+epoch:23    time:1306
+
+train_loss:0.7956180759270985
+
+SHAPE:[512, 512]
+
+********
+
+epoch:24    time:1351
+
+train_loss:0.7951093290249507
+
+SHAPE:[512, 512]
+
+********
+
+epoch:25    time:1397
+
+train_loss:0.7819646759827932
+
+SHAPE:[512, 512]
+
+********
+
+epoch:26    time:1443
+
+train_loss:0.7795744520425797
+
+SHAPE:[512, 512]
+
+********
+
+epoch:27    time:1488
+
+train_loss:0.7689766592780749
+
+SHAPE:[512, 512]
+
+********
+
+epoch:28    time:1534
+
+train_loss:0.7647086797157924
+
+SHAPE:[512, 512]
+
+********
+
+epoch:29    time:1580
+
+train_loss:0.7641685497760773
+
+SHAPE:[512, 512]
+
+********
+
+epoch:30    time:1625
+
+train_loss:0.7576488176981608
+
+SHAPE:[512, 512]
+
+********
+
+epoch:31    time:1671
+
+train_loss:0.7406112748384476
+
+SHAPE:[512, 512]
+
+********
+
+epoch:32    time:1717
+
+train_loss:0.7374109350641569
+
+SHAPE:[512, 512]
+
+********
+
+epoch:33    time:1762
+
+train_loss:0.7292865474025408
+
+SHAPE:[512, 512]
+
+********
+
+epoch:34    time:1808
+
+train_loss:0.717134489218394
+
+SHAPE:[512, 512]
+
+********
+
+epoch:35    time:1854
+
+train_loss:0.6978353101015091
+
+SHAPE:[512, 512]
+
+********
+
+epoch:36    time:1900
+
+train_loss:0.6897244384884834
+
+SHAPE:[512, 512]
+
+********
+
+epoch:37    time:1946
+
+train_loss:0.6885958309968313
+
+SHAPE:[512, 512]
+
+********
+
+epoch:38    time:1992
+
+train_loss:0.673907474676768
+
+SHAPE:[512, 512]
+
+********
+
+epoch:39    time:2037
+
+train_loss:0.672607913017273
+
+SHAPE:[512, 512]
+
+********
+
+epoch:40    time:2083
+
+train_loss:0.6627160586913426
+
+SHAPE:[512, 512]
+
+********
+
+epoch:41    time:2129
+
+train_loss:0.6595049822330474
+
+SHAPE:[512, 512]
+
+********
+
+epoch:42    time:2175
+
+train_loss:0.6475807278354963
+
+SHAPE:[512, 512]
+
+********
+
+epoch:43    time:2221
+
+train_loss:0.6412750879923502
+
+SHAPE:[512, 512]
+
+********
+
+epoch:44    time:2267
+
+train_loss:0.6365164930621783
+
+SHAPE:[512, 512]
+
+********
+
+epoch:45    time:2313
+
+train_loss:0.6354073658585548
+
+SHAPE:[512, 512]
+
+********
+
+epoch:46    time:2359
+
+train_loss:0.634060390094916
+
+SHAPE:[512, 512]
+
+********
+
+epoch:47    time:2405
+
+train_loss:0.6166033104062081
+
+SHAPE:[512, 512]
+
+********
+
+epoch:48    time:2451
+
+train_loss:0.6191606956720352
+
+SHAPE:[512, 512]
+
+********
+
+epoch:49    time:2496
+
+train_loss:0.6210456188519796
+
+SHAPE:[512, 512]
+
+********
+
+epoch:50    time:2541
+
+train_loss:0.6127645968397458
+
+SHAPE:[512, 512]
+
+********
+
+epoch:51    time:2587
+
+train_loss:0.6044740449388822
+
+SHAPE:[512, 512]
+
+********
+
+epoch:52    time:2633
+
+train_loss:0.6176066356897354
+
+SHAPE:[512, 512]
+
+********
+
+epoch:53    time:2679
+
+train_loss:0.6064225874344508
+
+SHAPE:[512, 512]
+
+********
+
+epoch:54    time:2724
+
+train_loss:0.5951548075675964
+
+SHAPE:[512, 512]
+
+********
+
+epoch:55    time:2770
+
+train_loss:0.5878455995519956
+
+SHAPE:[512, 512]
+
+********
+
+epoch:56    time:2816
+
+train_loss:0.5859028685092926
+
+SHAPE:[512, 512]
+
+********
+
+epoch:57    time:2861
+
+train_loss:0.5864290343721708
+
+SHAPE:[512, 512]
+
+********
+
+epoch:58    time:2907
+
+train_loss:0.5824561323722204
+
+SHAPE:[512, 512]
+
+********
+
+epoch:59    time:2952
+
+train_loss:0.5768861761689186
+
+SHAPE:[512, 512]
+
+********
+
+epoch:60    time:2998
+
+train_loss:0.5650320286055406
+
+SHAPE:[512, 512]
+
+********
+
+epoch:61    time:3044
+
+train_loss:0.572932687997818
+
+SHAPE:[512, 512]
+
+********
+
+epoch:62    time:3090
+
+train_loss:0.5732915226618449
+
+SHAPE:[512, 512]
+
+********
+
+epoch:63    time:3135
+
+train_loss:0.5623503770430883
+
+SHAPE:[512, 512]
+
+********
+
+epoch:64    time:3181
+
+train_loss:0.5591583025455474
+
+SHAPE:[512, 512]
+
+********
+
+epoch:65    time:3227
+
+train_loss:0.5678420872489611
+
+SHAPE:[512, 512]
+
+********
+
+epoch:66    time:3273
+
+train_loss:0.557924143175284
+
+SHAPE:[512, 512]
+
+********
+
+epoch:67    time:3319
+
+train_loss:0.5605967876315117
+
+SHAPE:[512, 512]
+
+********
+
+epoch:68    time:3364
+
+train_loss:0.5449860020478566
+
+SHAPE:[512, 512]
+
+********
+
+epoch:69    time:3410
+
+train_loss:0.5489522710442543
+
+SHAPE:[512, 512]
+
+********
+
+epoch:70    time:3456
+
+train_loss:0.5494205976525942
+
+SHAPE:[512, 512]
+
+********
+
+epoch:71    time:3501
+
+train_loss:0.5417229222257932
+
+SHAPE:[512, 512]
+
+********
+
+epoch:72    time:3547
+
+train_loss:0.5444881100455919
+
+SHAPE:[512, 512]
+
+********
+
+epoch:73    time:3593
+
+train_loss:0.5440734498699507
+
+SHAPE:[512, 512]
+
+********
+
+epoch:74    time:3638
+
+train_loss:0.5370168963074684
+
+SHAPE:[512, 512]
+
+********
+
+epoch:75    time:3684
+
+train_loss:0.5386916130781174
+
+SHAPE:[512, 512]
+
+********
+
+epoch:76    time:3730
+
+train_loss:0.5387044564882915
+
+SHAPE:[512, 512]
+
+********
+
+epoch:77    time:3775
+
+train_loss:0.5406728218495845
+
+SHAPE:[512, 512]
+
+********
+
+epoch:78    time:3820
+
+train_loss:0.5314369624853135
+
+SHAPE:[512, 512]
+
+********
+
+epoch:79    time:3866
+
+train_loss:0.5316679186622302
+
+SHAPE:[512, 512]
+
+********
+
+epoch:80    time:3912
+
+train_loss:0.5243476136525472
+
+SHAPE:[512, 512]
+
+********
+
+epoch:81    time:3958
+
+train_loss:0.5082428428530693
+
+SHAPE:[512, 512]
+
+********
+
+epoch:82    time:4004
+
+train_loss:0.5268330814441046
+
+SHAPE:[512, 512]
+
+********
+
+epoch:83    time:4050
+
+train_loss:0.5217420633633931
+
+SHAPE:[512, 512]
+
+********
+
+epoch:84    time:4095
+
+train_loss:0.5109012439846993
+
+SHAPE:[512, 512]
+
+********
+
+epoch:85    time:4141
+
+train_loss:0.5098550475637118
+
+SHAPE:[512, 512]
+
+********
+
+epoch:86    time:4187
+
+train_loss:0.5214065767327944
+
+SHAPE:[512, 512]
+
+********
+
+epoch:87    time:4232
+
+train_loss:0.5321523741881052
+
+SHAPE:[512, 512]
+
+<logger.Logger object at 0x2b151b72c3d0>update learning rate: 0.000300 -> 0.000060
+<logger.Logger object at 0x2b151b72c3d0>update learning rate: 0.000300 -> 0.000060
+********
+
+epoch:88    time:4278
+
+train_loss:0.49343466098109884
+
+SHAPE:[512, 512]
+
+********
+
+epoch:89    time:4324
+
+train_loss:0.4925338928898176
+
+SHAPE:[512, 512]
+
+********
+
+epoch:90    time:4371
+
+train_loss:0.48623795434832573
+
+SHAPE:[512, 512]
+
+********
+
+epoch:91    time:4417
+
+train_loss:0.48514876822630565
+
+SHAPE:[512, 512]
+
+********
+
+epoch:92    time:4463
+
+train_loss:0.48225373019774753
+
+SHAPE:[512, 512]
+
+********
+
+epoch:93    time:4509
+
+train_loss:0.47135897477467853
+
+SHAPE:[512, 512]
+
+********
+
+epoch:94    time:4555
+
+train_loss:0.4800938732922077
+
+SHAPE:[512, 512]
+
+********
+
+epoch:95    time:4601
+
+train_loss:0.4771208658317725
+
+SHAPE:[512, 512]
+
+********
+
+epoch:96    time:4647
+
+train_loss:0.4727950918674469
+
+SHAPE:[512, 512]
+
+********
+
+epoch:97    time:4693
+
+train_loss:0.4825695652763049
+
+SHAPE:[512, 512]
+
+********
+
+epoch:98    time:4738
+
+train_loss:0.4734885235130787
+
+SHAPE:[512, 512]
+
+********
+
+epoch:99    time:4784
+
+train_loss:0.4726918607453505
+
+SHAPE:[512, 512]
+
+<logger.Logger object at 0x2b151b72c3d0>update learning rate: 0.000060 -> 0.000012
+<logger.Logger object at 0x2b151b72c3d0>update learning rate: 0.000060 -> 0.000012
+********
+
+epoch:100    time:4829
+
+train_loss:0.48351307223240536
+
+SHAPE:[512, 512]
+
+<logger.Logger object at 0x2b151b72c3d0>update learning rate: 0.000012 -> 0.000002
+<logger.Logger object at 0x2b151b72c3d0>update learning rate: 0.000012 -> 0.000002
+********
+
+epoch:101    time:4875
+
+train_loss:0.48516817977031074
+
+SHAPE:[512, 512]
+
+Finish!
+<class 'networks.unet.Unet'> UNet ./dataset/train [1.0] ./dataset/train/
+Testing : 0it [00:00, ?it/s]Testing : 1it [00:42, 42.26s/it]Testing : 2it [00:42, 17.48s/it]Testing : 3it [00:42,  9.55s/it]Testing : 4it [00:42,  5.85s/it]Testing : 5it [00:42,  3.78s/it]Testing : 6it [00:42,  2.54s/it]Testing : 7it [00:43,  1.75s/it]Testing : 8it [00:43,  1.23s/it]Testing : 9it [00:43,  1.14it/s]Testing : 10it [00:43,  1.55it/s]Testing : 11it [00:43,  2.07it/s]Testing : 12it [00:43,  2.70it/s]Testing : 13it [00:43,  3.39it/s]Testing : 14it [00:43,  4.16it/s]Testing : 15it [00:43,  4.89it/s]Testing : 16it [00:44,  5.55it/s]Testing : 17it [00:44,  6.10it/s]Testing : 18it [00:44,  6.53it/s]Testing : 19it [00:44,  7.02it/s]Testing : 20it [00:44,  7.38it/s]Testing : 20it [00:44,  2.23s/it]
+<class 'networks.unet.Unet'> UNet ./dataset/val [1.0] ./dataset/val/
+Testing : 0it [00:00, ?it/s]Testing : 1it [00:00,  7.07it/s]Testing : 2it [00:00,  5.79it/s]Testing : 3it [00:00,  5.94it/s]Testing : 4it [00:00,  6.37it/s]Testing : 5it [00:00,  6.39it/s]Testing : 6it [00:00,  6.62it/s]Testing : 7it [00:01,  6.75it/s]Testing : 8it [00:01,  6.77it/s]Testing : 9it [00:01,  6.59it/s]Testing : 10it [00:01,  5.96it/s]Testing : 11it [00:01,  6.17it/s]Testing : 12it [00:01,  6.48it/s]Testing : 13it [00:02,  6.53it/s]Testing : 14it [00:02,  6.56it/s]Testing : 15it [00:02,  6.50it/s]Testing : 16it [00:02,  6.39it/s]Testing : 17it [00:02,  6.44it/s]Testing : 18it [00:03,  3.89it/s]Testing : 19it [00:03,  4.23it/s]Testing : 20it [00:03,  4.65it/s]Testing : 20it [00:03,  5.72it/s]

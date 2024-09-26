@@ -13,6 +13,19 @@ from networks.nllinknet_pairwise_func import NL_LinkNet_DotProduct, NL_LinkNet_G
 from networks.unet import Unet
 from test import test_models
 from train_framework import TrainFramework
+import torch.nn.functional as F
+
+
+def custom_collate_fn(batch):
+    # 提取批次中的图像和掩膜
+    images = [item[0] for item in batch]
+    masks = [item[1] for item in batch]
+
+    # 对图像和掩膜进行动态调整（例如 resize）
+    resized_images = [F.interpolate(img.unsqueeze(0), size=(512, 512), mode='bilinear', align_corners=False).squeeze(0) for img in images]
+    resized_masks = [F.interpolate(mask.unsqueeze(0), size=(512, 512), mode='nearest').squeeze(0) for mask in masks]
+
+    return torch.stack(resized_images), torch.stack(resized_masks)
 
 
 def train_models(model, name, crop_size=(1024, 1024), init_learning_rate=0.0003, dataset='./dataset/train/',
@@ -45,6 +58,8 @@ def train_models(model, name, crop_size=(1024, 1024), init_learning_rate=0.0003,
         batch_size=batchsize,
         shuffle=True,
         num_workers=4)
+        # , 
+        # collate_fn=custom_collate_fn)
 
     mylog = Logger('logs/' + name + '.log')
     tic = time()
@@ -96,8 +111,9 @@ def main():
     parser.add_argument("--init_lr", help="set the initial learning rate", default=0.0003, type=float)
     parser.add_argument("--dataset", help="the path of train datasets", default="./dataset/train/")
     parser.add_argument("--load", help="the path of the weight file for loading", default="")
-    parser.add_argument("--total_epoch", help="total number of epochs", type=int, default=500)
+    parser.add_argument("--total_epoch", help="total number of epochs", type=int, default=1000)
     parser.add_argument("--weight_decay_factor", help="wegith decay factor", type=float, default=5.0)
+    parser.add_argument("--num_samples", help="sample quantity during testing", type=int, default=None)
     args = parser.parse_args()
 
     models = {'NL3_LinkNet': NL3_LinkNet, 'NL4_LinkNet': NL4_LinkNet, 'NL34_LinkNet': NL34_LinkNet,
@@ -113,11 +129,15 @@ def main():
     dataset = args.dataset
     load = args.load
     total_epoch = args.total_epoch
-    weight_decay_factor = args.weight_decay_factor 
+    weight_decay_factor = args.weight_decay_factor
+    num_samples = args.num_samples 
     
     train_models(model=model, name=name, crop_size=crop_size, init_learning_rate=init_learning_rate, dataset=dataset,
                  load=load,total_epoch=total_epoch,weight_decay_factor=weight_decay_factor)
-    test_models(model=model, name=name, scales=[1.0])
+    
+    test_models(model=model, name=name, source='./dataset/train', scales=[1.0], target= './dataset/train/', num_samples=num_samples)
+
+    test_models(model=model, name=name, source='./dataset/val', scales=[1.0], target='./dataset/val/', num_samples=num_samples)
 
 
 if __name__ == "__main__":

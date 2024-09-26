@@ -5,6 +5,8 @@ import scipy.misc
 import torch
 import torch.nn as nn
 from torch.autograd import Variable as V
+from PIL import Image
+from skimage.transform import resize 
 
 BATCHSIZE_PER_CARD = 1
 
@@ -20,23 +22,42 @@ class TTAFramework():
         ms_mask = np.zeros((flip_size, ch, cw))
         for scale in range(0, len_scales):
             scaling = nn.Upsample(scale_factor=scales[scale], mode='nearest')
-            scaled_imgs = scaling(imgs)  # 8, 3, 1024,1024
+            scaled_imgs = scaling(imgs)  # 8, 3, 512,512
             out = self.net.forward(scaled_imgs).squeeze().cpu().data.numpy()
             # downsampling
             scaled_size = [ch, cw]
 
             for fs in range(flip_size):
-                scaled_mask = scipy.misc.imresize(out[fs], scaled_size, interp='bilinear', mode=None)
-                scaled_mask = np.divide(scaled_mask, 255)
+                # scaled_mask = scipy.misc.imresize(out[fs], scaled_size, interp='bilinear', mode=None)
+                # scaled_mask = np.divide(scaled_mask, 255)
+                # ms_mask[fs] = ms_mask[fs] + scaled_mask
+                scaled_mask = resize(out[fs], scaled_size, order=1, anti_aliasing=True)
                 ms_mask[fs] = ms_mask[fs] + scaled_mask
+
+                # 将 NumPy 数组转换为 PIL 图像
+                # img = Image.fromarray(out[fs])
+                
+                # 调整图像尺寸
+                # scaled_img = img.resize(scaled_size, Image.BILINEAR)
+                
+                # 将 PIL 图像转换为 NumPy 数组
+                # scaled_mask = np.array(scaled_img)
+                # print(f"scaled_mask的初始值{scaled_mask}")
+                # 归一化
+                # scaled_mask = np.divide(scaled_mask, 255)
+                # print(f"scaled_mask的归一化值{scaled_mask}")
+                # 更新 ms_mask
+                # print(f"ms_mask[fs]的初始值{ms_mask[fs]}")
+                # ms_mask[fs] = ms_mask[fs] + scaled_mask
+                # print(f"ms_mask[fs]的更新值{ms_mask[fs]}")
 
         return ms_mask
 
-    def multi_scale_logits(self, imgs, flip_size=8, ch=1024, cw=1024, scales=(0.75, 1.0, 1.25)):
+    def multi_scale_logits(self, imgs, flip_size=8, ch=512, cw=512, scales=(0.75, 1.0, 1.25)):
         if type(scales) is tuple:
             scales = list(scales)
 
-        # imgs : flip_size * rgb_gray * ch * cw = 8*3*1024*1024
+        # imgs : flip_size * rgb_gray * ch * cw = 8*3*512*512
         ms_mask = self.multi_scaled_imgs(imgs, flip_size, ch, cw, scales)  # [scales,flipsize,3,sh,sw]|3,8,3,sh,sw
         return ms_mask
 
@@ -80,9 +101,9 @@ class TTAFramework():
         img4 = V(torch.Tensor(np.array(img4, np.float32) / 255.0 * 3.2 - 1.6).cuda())
 
         flip_size = 2
-        ch = 1024
-        cw = 1024
-        maska = self.multi_scale_logits(img1, flip_size, ch, cw, scales)  # mask : 2,3,1024,1024 -> 2,1024,1024
+        ch = 512
+        cw = 512
+        maska = self.multi_scale_logits(img1, flip_size, ch, cw, scales)  # mask : 2,3,512,512 -> 2,512,512
         maskb = self.multi_scale_logits(img2, flip_size, ch, cw, scales)
         maskc = self.multi_scale_logits(img3, flip_size, ch, cw, scales)
         maskd = self.multi_scale_logits(img4, flip_size, ch, cw, scales)
@@ -110,10 +131,10 @@ class TTAFramework():
         img6 = V(torch.Tensor(img6).cuda())
 
         flip_size = 4
-        ch = 1024
-        cw = 1024
-        maska = self.multi_scale_logits(img5, flip_size, ch, cw, scales)  # mask : 4,3,1024,1024 -> 4,1024,1024
-        maskb = self.multi_scale_logits(img6, flip_size, ch, cw, scales)  # mask : 4,3,1024,1024 -> 4,1024,1024
+        ch = 512
+        cw = 512
+        maska = self.multi_scale_logits(img5, flip_size, ch, cw, scales)  # mask : 4,3,512,512 -> 4,512,512
+        maskb = self.multi_scale_logits(img6, flip_size, ch, cw, scales)  # mask : 4,3,512,512 -> 4,512,512
 
         mask1 = maska + maskb[:, :, ::-1]
         mask2 = mask1[:2] + mask1[2:, ::-1]
@@ -134,11 +155,11 @@ class TTAFramework():
         img5 = np.array(img5, np.float32) / 255.0 * 3.2 - 1.6
         img5 = V(torch.Tensor(img5).cuda())
 
-        # img5(8,3,1024,1024) -> Multi-Scaled(MS,8,3,1024,1024) -> solver(MS,8,1024,1024) -> RevScaled(8,1024,1024)
+        # img5(8,3,512,512) -> Multi-Scaled(MS,8,3,512,512) -> solver(MS,8,512,512) -> RevScaled(8,512,512)
         flip_size = 8
-        ch = 1024
-        cw = 1024
-        mask = self.multi_scale_logits(img5, flip_size, ch, cw, scales)  # mask : 8,1024,1024
+        ch = 512
+        cw = 512
+        mask = self.multi_scale_logits(img5, flip_size, ch, cw, scales)  # mask : 8,512,512
 
         mask1 = mask[:4] + mask[4:, :, ::-1]
         mask2 = mask1[:2] + mask1[2:, ::-1]
