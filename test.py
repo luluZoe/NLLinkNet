@@ -58,16 +58,45 @@ def test_models(model, name, source='./dataset/val', scales=(1.0,), target='./da
         # print(target + name)
 
         mask = solver.test_one_img_from_path(img_source + name, scales)
-        print(mask,"\n")
+        # print(f"Mask data type: {mask.dtype}")
+        # print(f"Mask type: {type(mask)}")
+        # print(mask,"\n")
         # 二值化：将掩膜值大于某个阈值的设置为 1，其余为 0
+        # print(f"len_scales:{len_scales}")
         mask[mask > 4.0 * len_scales] = 255
         mask[mask <= 4.0 * len_scales] = 0
-        # mask[mask >= 1.0] = 255
-        # mask[mask < 1.0] = 0
-        
-        # 保存为单通道的 0-1 二值图像
-        cv2.imwrite(target + name, mask.astype(np.uint8))  # 不需要转换为 RGB
 
+        # # mask[mask >= 1.0] = 255
+        # # mask[mask < 1.0] = 0
+        # print(f"mask值{mask}")
+        # # 保存为单通道的 0-1 二值图像
+        # cv2.imwrite(target + name, mask.astype(np.uint8))  # 不需要转换为 RGB
+
+        # print(mask.shape)       # 查看掩码的形状
+        # print(np.max(mask))     # 查看掩码的最大值
+        # print(np.min(mask))     # 查看掩码的最小值
+        # print(np.unique(mask))  # 检查唯一值
+
+        mask = mask.astype(np.uint8)  # 确保掩码图为 uint8 类型
+
+        # cv2.imwrite(target + name[:-4] + "_255.png", mask)
+
+        # print(mask.shape)       # 查看掩码的形状
+        # print(np.max(mask))     # 查看掩码的最大值
+        # print(np.min(mask))     # 查看掩码的最小值
+        # print(np.unique(mask))  # 检查唯一值
+
+        mask[mask == 255] = 1
+        mask[mask == 0] = 0
+
+        # print(mask.shape)       # 查看掩码的形状
+        # print(np.max(mask))     # 查看掩码的最大值
+        # print(np.min(mask))     # 查看掩码的最小值
+        # print(np.unique(mask))  # 检查唯一值
+
+        cv2.imwrite(target + name, mask)
+        # img = cv2.imread(target + name, cv2.IMREAD_UNCHANGED)
+        # print(np.unique(img))  # 输出图像中的唯一像素值，确保只有 0 和 1
 
 
 

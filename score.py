@@ -38,21 +38,45 @@ def calculate_score(pred_mask_path, true_mask_path):
 
 def main():
 
-    label_dir = 'path/to/label/folder'
-    result_dir = 'path/to/result/folder'
+    label_dir = './dataset/val/labels/'
+    result_dir = './submits/dataset/val/NL_LinkNet_EGaussian/'
+    log_file = 'evaluation_log_NL_LinkNet_EGaussian.txt'
 
     total_score = 0
     image_count = 0
 
-    for file_name in os.listdir(label_dir):
-        label_path = os.path.join(label_dir, file_name)
-        result_path = os.path.join(result_dir, file_name)
-        
-        if os.path.exists(result_path):
-            score = calculate_score(result_path, label_path)
-            total_score += score
-            image_count += 1
+    # 打开日志文件写入
+    with open(log_file, 'w') as log:
+        print("Filename\tIOU\tF1\tScore\n")
+        log.write("Filename\tIOU\tF1\tScore\n")  # 写入标题行
 
-    average_score = total_score / image_count if image_count != 0 else 0
-    print(f"Average Score: {average_score:.2f}")
+        # 遍历所有label文件
+        for file_name in os.listdir(label_dir):
+            label_path = os.path.join(label_dir, file_name)
+            result_path = os.path.join(result_dir, file_name)
+            
+            if os.path.exists(result_path):
+                # 计算IOU和F1分数
+                iou = calculate_iou(result_path, label_path)
+                f1 = calculate_f1(result_path, label_path)
+                score = (0.5 * iou + 0.5 * f1) * 100
 
+                # 写入每个文件的文件名及其分数
+                print(f"{file_name}\t{iou:.4f}\t{f1:.4f}\t{score:.2f}\n")
+                log.write(f"{file_name}\t{iou:.4f}\t{f1:.4f}\t{score:.2f}\n")
+                
+                # 计算总分
+                total_score += score
+                image_count += 1
+
+        # 计算平均分数
+        average_score = total_score / image_count if image_count != 0 else 0
+
+        # 写入平均分数
+        log.write(f"\nAverage Score: {average_score:.2f}\n")
+
+    print(f"Evaluation completed. Results saved to {log_file}")
+
+
+if __name__ == "__main__":
+    main()
