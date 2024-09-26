@@ -1,0 +1,379 @@
+nohup: ignoring input
+<class 'networks.nllinknet_pairwise_func.NL_LinkNet_EGaussian'> NL_LinkNet_EGaussian [512, 512] 0.0003 ./dataset/train/ 
+/public/home/zzutaopw/miniconda3/envs/NL-LinkNet/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/public/home/zzutaopw/miniconda3/envs/NL-LinkNet/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet34_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet34_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+********
+
+epoch:1    time:103
+
+train_loss:0.8441746938228607
+
+SHAPE:[512, 512]
+
+/public/home/zzutaopw/miniconda3/envs/NL-LinkNet/lib/python3.8/site-packages/torch/nn/functional.py:1967: UserWarning: nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.
+  warnings.warn("nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.")
+********
+
+epoch:2    time:171
+
+train_loss:0.6296752682328224
+
+SHAPE:[512, 512]
+
+********
+
+epoch:3    time:239
+
+train_loss:0.5636656226714453
+
+SHAPE:[512, 512]
+
+********
+
+epoch:4    time:307
+
+train_loss:0.5296947225928307
+
+SHAPE:[512, 512]
+
+********
+
+epoch:5    time:375
+
+train_loss:0.528226434290409
+
+SHAPE:[512, 512]
+
+********
+
+epoch:6    time:444
+
+train_loss:0.5063570883373419
+
+SHAPE:[512, 512]
+
+********
+
+epoch:7    time:513
+
+train_loss:0.49075977702935536
+
+SHAPE:[512, 512]
+
+********
+
+epoch:8    time:581
+
+train_loss:0.4934083008766174
+
+SHAPE:[512, 512]
+
+********
+
+epoch:9    time:650
+
+train_loss:0.48486647600928945
+
+SHAPE:[512, 512]
+
+********
+
+epoch:10    time:719
+
+train_loss:0.47717196598649025
+
+SHAPE:[512, 512]
+
+********
+
+epoch:11    time:787
+
+train_loss:0.47451948215564094
+
+SHAPE:[512, 512]
+
+********
+
+epoch:12    time:854
+
+train_loss:0.4743312628567219
+
+SHAPE:[512, 512]
+
+********
+
+epoch:13    time:923
+
+train_loss:0.4671390786270301
+
+SHAPE:[512, 512]
+
+********
+
+epoch:14    time:992
+
+train_loss:0.458817632496357
+
+SHAPE:[512, 512]
+
+********
+
+epoch:15    time:1061
+
+train_loss:0.46133660291632017
+
+SHAPE:[512, 512]
+
+********
+
+epoch:16    time:1129
+
+train_loss:0.44217979873220126
+
+SHAPE:[512, 512]
+
+********
+
+epoch:17    time:1197
+
+train_loss:0.4617223749558131
+
+SHAPE:[512, 512]
+
+********
+
+epoch:18    time:1265
+
+train_loss:0.44385089511672654
+
+SHAPE:[512, 512]
+
+********
+
+epoch:19    time:1333
+
+train_loss:0.44338837107022605
+
+SHAPE:[512, 512]
+
+********
+
+epoch:20    time:1401
+
+train_loss:0.426478339334329
+
+SHAPE:[512, 512]
+
+********
+
+epoch:21    time:1469
+
+train_loss:0.4507128168642521
+
+SHAPE:[512, 512]
+
+********
+
+epoch:22    time:1537
+
+train_loss:0.43296715304255484
+
+SHAPE:[512, 512]
+
+********
+
+epoch:23    time:1605
+
+train_loss:0.4376988479991754
+
+SHAPE:[512, 512]
+
+********
+
+epoch:24    time:1673
+
+train_loss:0.43333422457178433
+
+SHAPE:[512, 512]
+
+********
+
+epoch:25    time:1742
+
+train_loss:0.42849933917323746
+
+SHAPE:[512, 512]
+
+********
+
+epoch:26    time:1810
+
+train_loss:0.4443652572731177
+
+SHAPE:[512, 512]
+
+<logger.Logger object at 0x2af14b9dc7f0>update learning rate: 0.000300 -> 0.000060
+<logger.Logger object at 0x2af14b9dc7f0>update learning rate: 0.000300 -> 0.000060
+********
+
+epoch:27    time:1878
+
+train_loss:0.40866738691926
+
+SHAPE:[512, 512]
+
+********
+
+epoch:28    time:1948
+
+train_loss:0.4022277515133222
+
+SHAPE:[512, 512]
+
+********
+
+epoch:29    time:2017
+
+train_loss:0.40485861351092656
+
+SHAPE:[512, 512]
+
+********
+
+epoch:30    time:2084
+
+train_loss:0.39344314515590667
+
+SHAPE:[512, 512]
+
+********
+
+epoch:31    time:2152
+
+train_loss:0.38811765059828757
+
+SHAPE:[512, 512]
+
+********
+
+epoch:32    time:2221
+
+train_loss:0.3828162138660749
+
+SHAPE:[512, 512]
+
+********
+
+epoch:33    time:2290
+
+train_loss:0.37873267804582916
+
+SHAPE:[512, 512]
+
+********
+
+epoch:34    time:2359
+
+train_loss:0.37043362190326057
+
+SHAPE:[512, 512]
+
+********
+
+epoch:35    time:2428
+
+train_loss:0.37639664391676586
+
+SHAPE:[512, 512]
+
+********
+
+epoch:36    time:2496
+
+train_loss:0.3753784706691901
+
+SHAPE:[512, 512]
+
+********
+
+epoch:37    time:2564
+
+train_loss:0.36536804427703223
+
+SHAPE:[512, 512]
+
+********
+
+epoch:38    time:2633
+
+train_loss:0.37608573347330093
+
+SHAPE:[512, 512]
+
+********
+
+epoch:39    time:2701
+
+train_loss:0.36961862981319427
+
+SHAPE:[512, 512]
+
+********
+
+epoch:40    time:2770
+
+train_loss:0.3687673366566499
+
+SHAPE:[512, 512]
+
+********
+
+epoch:41    time:2839
+
+train_loss:0.36977897487580774
+
+SHAPE:[512, 512]
+
+********
+
+epoch:42    time:2908
+
+train_loss:0.3728265792131424
+
+SHAPE:[512, 512]
+
+********
+
+epoch:43    time:2977
+
+train_loss:0.3697892858584722
+
+SHAPE:[512, 512]
+
+<logger.Logger object at 0x2af14b9dc7f0>update learning rate: 0.000060 -> 0.000012
+<logger.Logger object at 0x2af14b9dc7f0>update learning rate: 0.000060 -> 0.000012
+********
+
+epoch:44    time:3046
+
+train_loss:0.3785206172366937
+
+SHAPE:[512, 512]
+
+<logger.Logger object at 0x2af14b9dc7f0>update learning rate: 0.000012 -> 0.000002
+<logger.Logger object at 0x2af14b9dc7f0>update learning rate: 0.000012 -> 0.000002
+********
+
+epoch:45    time:3115
+
+train_loss:0.369547314842542
+
+SHAPE:[512, 512]
+
+Finish!
+<class 'networks.nllinknet_pairwise_func.NL_LinkNet_EGaussian'> NL_LinkNet_EGaussian ./dataset/train [1.0] ./dataset/train/
+Testing : 0it [00:00, ?it/s]Testing : 1it [00:00,  1.41it/s]Testing : 2it [00:00,  2.60it/s]Testing : 3it [00:01,  3.60it/s]Testing : 4it [00:01,  4.41it/s]Testing : 5it [00:01,  5.04it/s]Testing : 6it [00:01,  5.47it/s]Testing : 7it [00:01,  5.81it/s]Testing : 8it [00:01,  6.07it/s]Testing : 9it [00:01,  6.24it/s]Testing : 10it [00:02,  6.38it/s]Testing : 11it [00:02,  5.81it/s]Testing : 12it [00:02,  6.02it/s]Testing : 13it [00:02,  6.17it/s]Testing : 14it [00:02,  6.22it/s]Testing : 15it [00:02,  6.24it/s]Testing : 16it [00:03,  6.27it/s]Testing : 17it [00:03,  6.33it/s]Testing : 18it [00:03,  6.40it/s]Testing : 19it [00:03,  6.47it/s]Testing : 20it [00:03,  6.53it/s]Testing : 20it [00:03,  5.47it/s]
+<class 'networks.nllinknet_pairwise_func.NL_LinkNet_EGaussian'> NL_LinkNet_EGaussian ./dataset/val [1.0] ./dataset/val/
+Testing : 0it [00:00, ?it/s]Testing : 1it [00:00,  3.77it/s]Testing : 2it [00:00,  3.70it/s]Testing : 3it [00:00,  3.29it/s]Testing : 4it [00:01,  3.97it/s]Testing : 5it [00:01,  4.42it/s]Testing : 6it [00:01,  4.68it/s]Testing : 7it [00:01,  4.39it/s]Testing : 8it [00:01,  4.42it/s]Testing : 9it [00:02,  4.43it/s]Testing : 10it [00:02,  4.72it/s]Testing : 11it [00:02,  3.98it/s]Testing : 12it [00:02,  4.40it/s]Testing : 13it [00:03,  4.60it/s]Testing : 14it [00:03,  4.84it/s]Testing : 15it [00:03,  4.65it/s]Testing : 16it [00:03,  3.70it/s]Testing : 17it [00:03,  4.22it/s]Testing : 18it [00:04,  4.00it/s]Testing : 19it [00:04,  4.10it/s]Testing : 20it [00:04,  4.35it/s]Testing : 20it [00:04,  4.26it/s]
