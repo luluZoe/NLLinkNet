@@ -39,8 +39,8 @@ def calculate_score(pred_mask_path, true_mask_path):
 def main():
 
     label_dir = './dataset/val/labels/'
-    result_dir = './submits/dataset/val/NL_LinkNet_EGaussian/'
-    log_file = 'evaluation_log_NL_LinkNet_EGaussian.txt'
+    result_dir = './submits/dataset/val/NL34_LinkNet/'
+    log_file = 'evaluation_log_NL34_LinkNet_all.txt'
 
     total_score = 0
     image_count = 0

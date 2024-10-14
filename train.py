@@ -89,10 +89,10 @@ def train_models(model, name, crop_size=(1024, 1024), init_learning_rate=0.0003,
             no_optim = 0
             train_epoch_best_loss = train_epoch_loss
             solver.save('weights/' + name + '.th')
-        if no_optim > 8:  # 6
+        if no_optim > 12:  # 8
             mylog.write('early stop at %d epoch' % epoch)
             break
-        if no_optim > 5:  # 3
+        if no_optim > 5:  # 5
             if solver.old_lr < 5e-6:  # 5e-7
                 break
             solver.load('weights/' + name + '.th')
@@ -135,9 +135,9 @@ def main():
     train_models(model=model, name=name, crop_size=crop_size, init_learning_rate=init_learning_rate, dataset=dataset,
                  load=load,total_epoch=total_epoch,weight_decay_factor=weight_decay_factor)
     
-    test_models(model=model, name=name, source='./dataset/train', scales=[1.0], target= './dataset/train/', num_samples=num_samples)
+    test_models(model=model, name=name, source='./dataset/train', scales=[1.0], target= './dataset/train/', num_samples=20)
 
-    test_models(model=model, name=name, source='./dataset/val', scales=[1.0], target='./dataset/val/', num_samples=num_samples)
+    test_models(model=model, name=name, source='./dataset/val', scales=[1.0], target='./dataset/val/', num_samples=20)
 
 
 if __name__ == "__main__":

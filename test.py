@@ -79,7 +79,7 @@ def test_models(model, name, source='./dataset/val', scales=(1.0,), target='./da
 
         mask = mask.astype(np.uint8)  # 确保掩码图为 uint8 类型
 
-        # cv2.imwrite(target + name[:-4] + "_255.png", mask)
+        cv2.imwrite(target + name[:-4] + "_255.png", mask)
 
         # print(mask.shape)       # 查看掩码的形状
         # print(np.max(mask))     # 查看掩码的最大值
